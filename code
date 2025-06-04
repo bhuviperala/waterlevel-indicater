@@ -1,0 +1,34 @@
+```cpp
+// water_level_sensor.ino
+#include <ESP8266WiFi.h>
+#include <FirebaseArduino.h>
+#include "firebase_config.h"
+
+// HC-SR04 pins
+#define TRIG D1
+#define ECHO D2
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(TRIG, OUTPUT);
+  pinMode(ECHO, INPUT);
+
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
+}
+
+void loop() {
+  long duration;
+  digitalWrite(TRIG, LOW);
+  delayMicroseconds(2);
+  digitalWrite(TRIG, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG, LOW);
+
+  duration = pulseIn(ECHO, HIGH);
+  float distance = duration * 0.034 / 2;
+  float levelPercent = 100 - (distance / 30.0 * 100); // assuming tank height 30cm
+
+  Firebase.setFloat("water_level", levelPercent);
+  delay(5000);
+}
