@@ -44,8 +44,10 @@ This project is a smart water level monitoring system using IoT. It uses an ultr
 
 ## 🛠️ Circuit Diagram
 
-![Circuit Diagram](circuit_diagram/water_level_circuit.png)
+![circuit](https://github.com/user-attachments/assets/65130c1c-9194-45e3-b685-9cb6487a5fdf)
 
+![hardware tools](https://github.com/user-attachments/assets/f7bace66-e9f6-4f23-aaa3-ce2be9f90755)
+![imaging](https://github.com/user-attachments/assets/ede2b1ec-d806-4c84-ac32-110c4c652819)
 ---
 
 ## 🧠 How It Works
